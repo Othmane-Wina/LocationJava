@@ -8,9 +8,7 @@ public class Client extends Personne{
     public int getClientId() {
         return clientId;
     }
-    public void setClientid(int clientId) {
-        this.clientId = clientId;
-    }
+
 }
 
 

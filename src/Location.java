@@ -33,6 +33,10 @@ public class Location {
         return client;
     }
 
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
     public Date getDatePrise() {
         return datePrise;
     }
@@ -63,6 +67,9 @@ public class Location {
                 return 1;
             }
         }
+    }
+    public void locationReturn(){
+        this.dateRetour = new Date();
     }
 
 }

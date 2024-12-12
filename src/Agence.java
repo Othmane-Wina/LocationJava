@@ -15,20 +15,35 @@ public class Agence {
         locations.add(location);
     }
 
-    public Vehicule searchVehicule(String matricule) {
+    public Vehicule searchVehicule(String matricule) throws inexistantVehiculeException{
         for (Vehicule vehicule : vehicules) {
             if (vehicule.getMatricule().equals(matricule)) {
                 return vehicule;
             }
         }
-        return null;
+        throw new inexistantVehiculeException();
     }
-    public Client searchClient(int clientid) {
+    public Client searchClient(int clientid) throws inexistantClientException {
         for (Client client : clients) {
             if(client.getClientId() == clientid){
                 return client;
             }
         }
-        return null;
+        throw new inexistantClientException();
+    }
+    public boolean isCarAvailable(String matricule) {
+        // this function check if a car is available for rent based on its matricule"
+        Vehicule v;
+        try{
+            v = searchVehicule(matricule);
+            for(Location location : locations){
+                if (location.getVehicule().equals(v) && location.getState() != 0){
+                    return false;
+                }
+            }
+            return true;
+        }catch (inexistantVehiculeException e){
+            return false;
+        }
     }
 }
