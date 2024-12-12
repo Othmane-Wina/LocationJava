@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Date;
 
 public class Location {
@@ -10,13 +11,18 @@ public class Location {
     private Date dateRetourPrévu;
 
 
-    public Location(Client client, Vehicule vehicule, Date datePrise, Date dateRetour, Date dateRetourPrévu) {
+    public Location(Client client, Vehicule vehicule, int Days) {
         this.client = client;
         this.vehicule = vehicule;
-        this.datePrise = datePrise;
-        this.dateRetour = dateRetour;
-        this.dateRetourPrévu = dateRetourPrévu;
         this.numContract = count++;
+        this.datePrise = new Date();
+        // increment the date by Days
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(datePrise);
+        calendar.add(Calendar.DAY_OF_MONTH, Days);
+
+        this.dateRetourPrévu = calendar.getTime();
+
     }
 
     public int getNumContract() {
@@ -39,8 +45,24 @@ public class Location {
         return dateRetourPrévu;
     }
 
-    public boolean estRendu(){
-        return false;
+    public int getState(){
+        // 0 est rendu
+        // 1 est en cours
+        // 2 est en retard
+        if (dateRetour != null) {
+            if (dateRetour.after(dateRetourPrévu)) {
+                return 2;
+            }else {
+                return 0;
+            }
+        }else{
+            Date current = new Date();
+            if (current.after(dateRetourPrévu)) {
+                return 2;
+            }else{
+                return 1;
+            }
+        }
     }
 
 }
