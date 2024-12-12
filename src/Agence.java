@@ -1,19 +1,9 @@
 import java.util.ArrayList;
 
 public class Agence {
-    ArrayList<Vehicule> vehicules;
-    ArrayList<Client> clients;
-    ArrayList<Location> locations;
-
-    public void addVehicule(Vehicule vehicule) {
-        vehicules.add(vehicule);
-    }
-    public void addClient(Client client) {
-        clients.add(client);
-    }
-    public void addLocation(Location location) {
-        locations.add(location);
-    }
+    private ArrayList<Vehicule> vehicules;
+    private ArrayList<Client> clients;
+    private ArrayList<Location> locations;
 
     public Vehicule searchVehicule(String matricule) throws inexistantVehiculeException{
         for (Vehicule vehicule : vehicules) {
@@ -31,6 +21,37 @@ public class Agence {
         }
         throw new inexistantClientException();
     }
+    public Location searchLocation(int clientid, String matricule) throws inexistantLocationException{
+        for (Location location : locations) {
+            if( location.getClient().getClientId() == clientid && location.getVehicule().getMatricule() == matricule){
+                return location;
+            }
+        }
+        throw new inexistantLocationException();
+    }
+
+    public void addVehicule(Vehicule vehicule) {
+        try{
+            searchVehicule(vehicule.getMatricule());
+
+        }catch (inexistantVehiculeException e){
+            vehicules.add(vehicule);
+        }
+    }
+    public void addClient(Client client) {
+        try {
+            searchClient(client.getClientId());
+        } catch (inexistantClientException e) {
+            clients.add(client);
+        }
+    }
+    public void addLocation(Location location) {
+        try{
+            searchLocation(location.getClient().getClientId(), location.getVehicule().getMatricule());
+        }catch (inexistantLocationException e){
+            locations.add(location);
+        }
+    }
     public boolean isCarAvailable(String matricule) {
         // this function check if a car is available for rent based on its matricule"
         Vehicule v;
@@ -46,4 +67,5 @@ public class Agence {
             return false;
         }
     }
+
 }
