@@ -39,4 +39,8 @@ public class Location {
         return dateRetourPrévu;
     }
 
+    public boolean estRendu(){
+        return false;
+    }
+
 }
