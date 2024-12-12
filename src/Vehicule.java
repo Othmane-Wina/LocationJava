@@ -1,4 +1,4 @@
-public class Vehicule {
+public class Vehicule implements Comparable<Vehicule>{
     public String matricule;
     public String marque;
     public String modele;
@@ -35,5 +35,10 @@ public class Vehicule {
     @Override
     public String toString() {
         return "Matricule: " + matricule + "\nMarque: " + marque + "\nModele: " + modele + "\nKilometrage: " + kilometrage + "\nPrix : " + prix + "DH";
+    }
+
+    @Override
+    public int compareTo(Vehicule v) {
+        return this.prix - v.prix;
     }
 }
