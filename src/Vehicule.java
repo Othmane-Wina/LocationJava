@@ -16,27 +16,24 @@ public class Vehicule {
     public String getMatricule() {
         return matricule;
     }
-
-
     public String getMarque() {
         return marque;
     }
-
     public String getModele() {
         return modele;
     }
-
     public int getPrix() {
         return prix;
     }
-
+    public int getKilometrage() {
+        return kilometrage;
+    }
     public void setPrix(int prix) {
         this.prix = prix;
     }
 
-    public int getKilometrage() {
-        return kilometrage;
+    @Override
+    public String toString() {
+        return "Matricule: " + matricule + "\nMarque: " + marque + "\nModele: " + modele + "\nKilometrage: " + kilometrage + "\nPrix : " + prix + "DH";
     }
-
-
 }

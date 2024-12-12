@@ -8,7 +8,10 @@ public class Client extends Personne{
     public int getClientId() {
         return clientId;
     }
-
+    @Override
+    public String toString() {
+        return super.toString() + "|Client: " + clientId;
+    }
 }
 
 
