@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Agence {
-    private ArrayList<Vehicule> vehicules;
-    private ArrayList<Client> clients;
-    private ArrayList<Location> locations;
+    public ArrayList<Vehicule> vehicules;
+    public ArrayList<Client> clients;
+    public ArrayList<Location> locations;
 
     public Vehicule searchVehicule(String matricule) throws inexistantVehiculeException{
         for (Vehicule vehicule : vehicules) {

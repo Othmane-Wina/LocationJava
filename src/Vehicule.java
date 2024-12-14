@@ -28,6 +28,9 @@ public class Vehicule implements Comparable<Vehicule>{
     public int getKilometrage() {
         return kilometrage;
     }
+    public void setKilometrage(int kilometrage) {
+        this.kilometrage = kilometrage;
+    }
     public void setPrix(int prix) {
         this.prix = prix;
     }
