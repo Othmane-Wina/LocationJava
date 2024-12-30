@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Location {
+public class Location implements Serializable {
     static int count = 0;
     private Client client;
-    private Vehicule vehicule;
+    public Vehicule vehicule;
     private int numContract;
     private Date datePrise;
     private Date dateRetour;

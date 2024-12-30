@@ -1,4 +1,6 @@
-public class Vehicule implements Comparable<Vehicule>{
+import java.io.Serializable;
+
+public class Vehicule implements Comparable<Vehicule>, Serializable {
     public String matricule;
     public String marque;
     public String modele;
@@ -37,7 +39,7 @@ public class Vehicule implements Comparable<Vehicule>{
 
     @Override
     public String toString() {
-        return "Matricule: " + matricule + "\nMarque: " + marque + "\nModele: " + modele + "\nKilometrage: " + kilometrage + "\nPrix : " + prix + "DH";
+        return "Matricule: " + matricule + "| Marque: " + marque + "| Modele: " + modele + "| Kilometrage: " + kilometrage + "| Prix : " + prix + "DH";
     }
 
     @Override
