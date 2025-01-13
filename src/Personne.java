@@ -1,4 +1,6 @@
-public abstract class Personne {
+import java.io.Serializable;
+
+public abstract class Personne implements Serializable {
     private String nom;
     private String prenom;
     private int age;
@@ -7,6 +9,12 @@ public abstract class Personne {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
+    }
+
+    public Personne(){
+        this.nom = "";
+        this.prenom = "";
+        this.age = 0;
     }
 
     public String getNom() {
@@ -21,7 +29,7 @@ public abstract class Personne {
 
     @Override
     public String toString() {
-        return "nom: " +nom + "|prénom: " + prenom + "|age: " + age;
+        return "nom: " +nom + "| prénom: " + prenom + "| age: " + age;
     }
 
 
